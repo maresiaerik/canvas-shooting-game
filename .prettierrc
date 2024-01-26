@@ -1,0 +1,15 @@
+
+{
+  "singleQuote": false,
+  "trailingComma": "all",
+  "printWidth": 100,
+  "importOrder": [
+    "(/components)|(/layouts)|(@/)|(\\.\\./icons)|(?=.*[A-Z])",
+    "^[./].*(?<!css)$",
+    "css$"
+  ],
+  "plugins": ["prettier-plugin-organize-imports"],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true,
+  "importOrderCaseInsensitive": false
+}
