@@ -42,7 +42,7 @@ export default abstract class MovingCanvasElement<DerivedElementMovementStatus> 
 
   protected canvasCoordinates: CanvasCoordinates;
 
-  private readonly context: CanvasRenderingContext2D;
+  protected readonly context: CanvasRenderingContext2D;
 
   private readonly sprite: HTMLImageElement;
 

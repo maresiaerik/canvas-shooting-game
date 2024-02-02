@@ -19,6 +19,11 @@ const PLAYER_MOVEMENT_RUN_IN_PX = 15;
 
 const PLAYER_MOVEMENT_WALK_IN_PX = 5;
 
+const CANVAS_BOUNDARIES_FOR_PLAYER = {
+  left: 0,
+  right: 880,
+};
+
 export default class Player extends MovingCanvasElement<PlayerStatus> {
   protected readonly elementDimensionsOnSprite = {
     width: 128,
@@ -67,18 +72,31 @@ export default class Player extends MovingCanvasElement<PlayerStatus> {
     } else {
       this.setSpriteAnimationFrameCoordinatesForMovement();
 
-      if (this.elementMovementStatus === "walk") {
-        this.canvasCoordinates.x +=
-          this.movementDirection === "left"
-            ? -PLAYER_MOVEMENT_WALK_IN_PX
-            : PLAYER_MOVEMENT_WALK_IN_PX;
-      } else if (this.elementMovementStatus === "run") {
-        this.canvasCoordinates.x +=
-          this.movementDirection === "left"
-            ? -PLAYER_MOVEMENT_RUN_IN_PX
-            : PLAYER_MOVEMENT_RUN_IN_PX;
+      if (this.elementMovementStatus === "walk" || this.elementMovementStatus === "run") {
+        this.currentCanvasCoordinates.x = this.getNewXCanvasCoordinatesForMovement();
       }
     }
+  }
+
+  private getNewXCanvasCoordinatesForMovement(): CanvasCoordinates["x"] {
+    const movementAmountInPx =
+      this.elementMovementStatus === "walk"
+        ? PLAYER_MOVEMENT_WALK_IN_PX
+        : PLAYER_MOVEMENT_RUN_IN_PX;
+
+    if (this.movementDirection === "left") {
+      const newCoordinates = this.currentCanvasCoordinates.x - movementAmountInPx;
+
+      return newCoordinates < CANVAS_BOUNDARIES_FOR_PLAYER.left
+        ? CANVAS_BOUNDARIES_FOR_PLAYER.left
+        : newCoordinates;
+    }
+
+    const newCoordinates = this.currentCanvasCoordinates.x + movementAmountInPx;
+
+    return newCoordinates > CANVAS_BOUNDARIES_FOR_PLAYER.right
+      ? CANVAS_BOUNDARIES_FOR_PLAYER.right
+      : newCoordinates;
   }
 
   public left(): void {
