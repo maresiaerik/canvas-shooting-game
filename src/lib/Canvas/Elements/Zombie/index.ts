@@ -27,7 +27,7 @@ export default class Zombie extends MovingCanvasElement<ZombieStatus> {
   };
 
   protected elementDimensionsOnSprite = {
-    width: 97,
+    width: 96,
     height: 97,
   };
 
