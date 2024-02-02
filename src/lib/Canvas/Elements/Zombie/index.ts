@@ -3,7 +3,7 @@ import { euclideanDistanceBetweenTwoCoordinates } from "@/lib/utils/canvas/maths
 import MovingCanvasElement, {
   CanvasCoordinates,
   MovementDirection,
-} from "../../abstract/MovingCanvasElement";
+} from "../abstract/MovingCanvasElement";
 import Player from "../Player";
 
 export type ZombieStatus = "die" | "attack" | "walk" | "hurt" | "run" | "bite" | "idle";

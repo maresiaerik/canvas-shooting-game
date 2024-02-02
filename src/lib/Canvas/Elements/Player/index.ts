@@ -2,7 +2,7 @@ import MovingCanvasElement, {
   CanvasCoordinates,
   ElementMovementStatus,
   MovementDirection,
-} from "../../abstract/MovingCanvasElement";
+} from "../abstract/MovingCanvasElement";
 
 type PlayerStatus = "die" | "idle" | "walk" | "run" | "shoot";
 

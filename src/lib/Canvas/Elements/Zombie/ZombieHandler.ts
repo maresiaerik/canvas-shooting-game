@@ -2,7 +2,7 @@
 import { euclideanDistanceBetweenTwoCoordinates } from "@/lib/utils/canvas/maths";
 
 import Zombie, { ZombieStatus } from ".";
-import { CanvasCoordinates } from "../../abstract/MovingCanvasElement";
+import { CanvasCoordinates } from "../abstract/MovingCanvasElement";
 import Player from "../Player";
 
 const DEFAULT_ANIMATION_FRAMES_BEFORE_ADDING_ZOMBIE = 180;
